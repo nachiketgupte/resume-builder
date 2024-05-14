@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
-
+import ResumePreview from "./components/ResumePreview";
+import Form1 from "./components/Form1";
+import Form2 from "./components/Form2";
+import { useState } from "react";
 function App() {
+  const [currentForm, setCurrentForm] = useState(0);
+  const [formData, setFormData] = useState({
+    fName: "",
+    lName: "",
+    email: "",
+    phoneNo: "",
+    city: "",
+    state: "",
+  });
+
+  const handleFormSubmit = (data) => {
+    setCurrentForm(currentForm + 1);
+    setFormData((prevData) => ({ ...prevData, ...data }));
+  };
+
+  const forms = [
+    <Form1 onSubmit={(fName, lName) => handleFormSubmit({ fName, lName })}></Form1>,
+    <Form2 onSubmit={(email, phoneNo, city, state) => handleFormSubmit({ email, phoneNo, city, state })}></Form2>,
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {forms[currentForm]}
+      <ResumePreview {...formData} />
     </div>
   );
 }
