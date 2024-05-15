@@ -23,12 +23,15 @@ const styles = StyleSheet.create({
     heading3 : {
       fontFamily: 'Garamond-semibold',
       fontSize: 12,
-      marginBottom: 5,
     },
     text: {
       fontFamily:'Garamond',
       fontSize: 12,
       marginBottom: 5,
+    },
+    subheading: {
+      fontFamily: 'Garamond-italic',
+      fontSize: 12,
     },
     underline: {
       borderBottomWidth: 1,
@@ -37,9 +40,20 @@ const styles = StyleSheet.create({
       marginBottom: 5,
     },
     textContainer: {
+      display: 'flex',
       flexDirection: 'row',
-      alignItems: 'center',
+      alignItems: 'flex-start'
     },
+    bullet: {
+      width: 10,
+      textAlign: 'center',
+      marginRight: 4,
+    },
+    bulletText: {
+      flex: 1,
+      fontSize: 12,
+      fontFamily: 'Garamond',
+    }
   });
 
 export default styles;

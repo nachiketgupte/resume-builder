@@ -2,14 +2,18 @@ import React from "react";
 import {Text, View} from '@react-pdf/renderer';
 import styles from '../styles';
 
-const BulletText = ({ items }) => (
-    <div>
+function BulletText({ items }) {
+  console.log(items);
+  return (
+    <View>
       {items.map((item, index) => (
         <View key={index} style={styles.textContainer}>
-          <Text style={styles.text}>{'\u2022'} {item}</Text>
+          <Text style={styles.bullet}>{'\u2022'}</Text>
+          <Text style={styles.bulletText}>{item}</Text>
         </View>
       ))}
-    </div>
+    </View>
   );
+}
 
 export default BulletText;

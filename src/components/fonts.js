@@ -30,3 +30,8 @@ Font.register({
   family: 'Garamond-semibold',
   src: 'fonts/static/EBGaramond-SemiBold.ttf',
 });
+
+Font.register({
+  family: 'Garamond-italic',
+  src: 'fonts/static/EBGaramond-Italic.ttf',
+});
