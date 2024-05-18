@@ -12,7 +12,7 @@ const Underline = () => (
   <View style={styles.underline}></View>
 );
 
-const ResumePreview = ({ fName, lName, email, phoneNo, city, state, schools }) => {
+const ResumePreview = ({ fName, lName, email, phoneNo, city, state, schools, experience }) => {
 
   return (
     <div className='pdf'>
@@ -28,24 +28,27 @@ const ResumePreview = ({ fName, lName, email, phoneNo, city, state, schools }) =
                 <div style={{display: 'flex', flexDirection: 'row', marginBottom: 5}}>
                 <Text style={styles.heading3}>{school.name}</Text>
                 <View style={{ width: 440 }}></View>
-                <Text style={styles.heading3}>Year from - Year to</Text>
+                <Text style={styles.heading3}>{school.dateFrom} - {school.dateTo}</Text>
                 </div>
                 <Text style={styles.subheading}>{school.course}</Text>
-                <BulletText items={[school.description.trim()]} />
+                <BulletText items={school.description} />
               </View>
             ))}
-            <BulletText
-            items={[
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In erat urna, auctor ac felis vel, euismod vestibulum neque.',
-              'Nulla facilisi. Donec blandit velit nec libero fermentum ultricies.',
-            ]}
-          />
-            {/* <Education /> */}
-            <Heading2 title = "PROJECTS" />
-            <Underline />
-            <Projects />
-            <Projects />
             <Heading2 title = "EXPERIENCE" />
+            <Underline />
+            {experience && experience.map((exp, index) => (
+              <View key={index}>
+                <div style={{display: 'flex', flexDirection: 'row', marginBottom: 5}}>
+                <Text style={styles.heading3}>{exp.companyName}</Text>
+                <View style={{ width: 440 }}></View>
+                <Text style={styles.heading3}>{exp.dateFrom} - {exp.dateTo}</Text>
+                </div>
+                <Text style={styles.subheading}>{exp.role}</Text>
+                <BulletText items={exp.description} />
+              </View>
+            ))}
+
+            <Heading2 title = "PROJECTS" />
             <Underline />
             <Projects />
             <Projects />

@@ -29,7 +29,7 @@ function Form2({ onSubmit }) {
     }
 
     return (
-        <div className="form-container">
+        <div className="">
             <form onSubmit={handleSubmit}>
                 <h2>Enter your Name</h2>
                 <input type="text" value={email} onChange={handleEmailChange} placeholder = "example@email.com" ></input>

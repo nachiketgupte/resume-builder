@@ -21,7 +21,7 @@ function Form1({ onSubmit }) {
     }
 
     return (
-        <div className="form-container">
+        <div className="">
             <form onSubmit={handleSubmit}>
                 <h2>Enter your Name</h2>
                 <input type="text" value={fName} onChange={handleFNameChange} placeholder="First name"></input>

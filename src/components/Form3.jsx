@@ -3,7 +3,7 @@ import { useState } from "react";
 
 function Form3({ onSubmit }) {
   const [schools, setSchools] = useState([
-    { name: "", course: "", description: "" },
+    { name: "", dateFrom: "", dateTo: "" ,course: "", description: "" },
   ]);
 
   const handleSchoolChange = (index, event) => {
@@ -14,16 +14,20 @@ function Form3({ onSubmit }) {
   };
 
   const handleAddSchool = () => {
-    setSchools([...schools, {name:'', course: '', description: ''}]);
+    setSchools([...schools, {name:'', dateFrom: '', dateTo: '', course: '', description: ''}]);
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    schools.forEach(school => {
+      school.description = school.description.split('\n');
+    });
+    console.log(schools);
     onSubmit(schools);
   };
 
   return (
-    <div className="form-container">
+    <div className="">
       <form onSubmit={handleSubmit}>
         <h2>Enter Education Details</h2>
         {schools.map((school, index) => (
@@ -34,6 +38,20 @@ function Form3({ onSubmit }) {
               value={school.name}
               onChange={(e) => handleSchoolChange(index, e)}
               placeholder="School Name"
+            />
+            <input
+              type="text"
+              name="dateFrom"
+              value={school.dateFrom}
+              onChange={(e) => handleSchoolChange(index, e)}
+              placeholder="Date From"
+            />
+            <input
+              type="text"
+              name="dateTo"
+              value={school.dateTo}
+              onChange={(e) => handleSchoolChange(index, e)}
+              placeholder="Date To"
             />
             <input
               type="text"
